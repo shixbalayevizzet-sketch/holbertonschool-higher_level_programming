@@ -4,15 +4,16 @@ import json
 
 class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
     """
-    Sadə HTTP sorğularını idarə edən sinif.
+    http.server.BaseHTTPRequestHandler sinfini miras alaraq 
+    sadə bir API idarəedicisi yaradırıq.
     """
 
     def do_GET(self):
         """
-        GET sorğularını endpointlərə görə yönləndirir.
+        GET sorğularını idarə edir və uyğun endpointlərə yönləndirir.
         """
         if self.path == '/':
-            # Əsas səhifə (Root)
+            # Əsas endpoint
             self.send_response(200)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
@@ -31,14 +32,14 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
             self.wfile.write(json.dumps(data).encode('utf-8'))
 
         elif self.path == '/status':
-            # Status yoxlanışı
+            # API statusunu yoxlayan endpoint
             self.send_response(200)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
             self.wfile.write(b"OK")
 
         elif self.path == '/info':
-            # Əlavə məlumat endpointi
+            # Versiya və təsvir məlumatı
             self.send_response(200)
             self.send_header("Content-type", "application/json")
             self.end_headers()
@@ -49,15 +50,21 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
             self.wfile.write(json.dumps(info).encode('utf-8'))
 
         else:
-            # Tapılmayan endpointlər üçün 404 xətası
+            # Əgər endpoint tapılmazsa 404 qaytarılır
             self.send_response(404)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write(b"404 Not Found")
+            # Testin keçməsi üçün tələb olunan dəqiq mətn:
+            self.wfile.write(b"Endpoint not found")
 
-# Serverin işə salınması
+# Serveri işə salmaq üçün əsas blok
 if __name__ == "__main__":
     PORT = 8000
+    # TCPServer vasitəsilə serveri 8000 portunda dinləməyə başlayırıq
     with socketserver.TCPServer(("", PORT), SimpleAPIHandler) as httpd:
-        print(f"Server {PORT} portunda işləyir...")
-        httpd.serve_forever()
+        print(f"Server http://localhost:{PORT} ünvanında işləyir...")
+        try:
+            httpd.serve_forever()
+        except KeyboardInterrupt:
+            print("\nServer dayandırıldı.")
+            httpd.shutdown()

@@ -1,17 +1,18 @@
 #!/usr/bin/python3
 """
-Bu modul obyektin atribut və metodlarını qaytaran lookup funksiyasını ehtiva edir.
+This module contains the lookup function that returns
+the list of available attributes and methods of an object.
 """
 
 
 def lookup(obj):
     """
-    Obyektin mövcud atribut və metodlarının siyahısını qaytarır.
+    Returns the list of available attributes and methods of an object.
 
     Args:
-        obj: Yoxlanılacaq obyekt.
+        obj: The object to inspect.
 
     Returns:
-        list: Atribut və metodların adlarından ibarət siyahı.
+        list: A list of strings representing the attributes and methods.
     """
     return dir(obj)

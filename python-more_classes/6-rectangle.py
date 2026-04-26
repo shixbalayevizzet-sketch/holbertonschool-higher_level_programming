@@ -12,7 +12,7 @@ class Rectangle:
     number_of_instances = 0
 
     def __init__(self, width=0, height=0):
-        """Initializes the rectangle and increments the instance counter."""
+        """Initializes the rectangle and increments the counter."""
         self.width = width
         self.height = height
         Rectangle.number_of_instances += 1
@@ -59,14 +59,15 @@ class Rectangle:
         """Returns a string representation of the rectangle using #."""
         if self.__width == 0 or self.__height == 0:
             return ""
+
         rect_lines = ["#" * self.__width for _ in range(self.__height)]
         return "\n".join(rect_lines)
 
     def __repr__(self):
         """Returns a string representation to recreate the instance."""
-        return "Rectangle({}, {})".format(self.__width, self.__height)
+        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
 
     def __del__(self):
-        """Prints a message and decrements the instance counter upon deletion."""
+        """Prints a message and decrements the counter upon deletion."""
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1

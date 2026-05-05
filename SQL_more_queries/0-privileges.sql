@@ -1,4 +1,5 @@
 #!/bin/bash
+# -- Listing privileges for specific MySQL users --
 
 # Define the users to check
 USERS=("user_0d_1" "user_0d_2")

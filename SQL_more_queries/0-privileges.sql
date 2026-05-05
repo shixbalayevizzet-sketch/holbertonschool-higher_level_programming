@@ -1,4 +1,4 @@
-#!/bin/bash
+k#!/bin/bash
 # -- Listing privileges for specific MySQL users --
 
 # Define the users to check
@@ -11,13 +11,13 @@ for USER in "${USERS[@]}"
 do
     echo ""
     echo "Privileges for [$USER]:"
-    # -u root: runs as root
-    # -p: prompts for password
-    # -e: executes the quoted SQL command
+
+    # Execute the mysql command to show grants
     mysql -u root -p -e "SHOW GRANTS FOR '$USER'@'localhost';" 2>/dev/null
-    # Check if the previous command failed (e.g., user doesn't exist)
+
+    # Check if the previous command failed
     if [ $? -ne 0 ]; then
-        echo "Error: Could not retrieve grants for '$USER'. Ensure the user exists and your password is correct."
+        echo "Error: Could not retrieve grants for '$USER'."
     fi
 done
 

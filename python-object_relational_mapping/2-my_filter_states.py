@@ -28,7 +28,10 @@ if __name__ == "__main__":
     cursor = db.cursor()
 
     # Create the SQL query using the format method as required
-    query = "SELECT * FROM states WHERE name = BINARY '{}' ORDER BY id ASC".format(state_searched)
+    query = (
+        "SELECT * FROM states WHERE name = BINARY '{}' "
+        "ORDER BY id ASC".format(state_searched)
+    )
     cursor.execute(query)
 
     # Fetch all the rows from the executed query

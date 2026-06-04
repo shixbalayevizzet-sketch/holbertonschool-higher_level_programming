@@ -1,0 +1,2 @@
+TypeError: <name> must be an integer
+ValueError: <name> must be greater than 0

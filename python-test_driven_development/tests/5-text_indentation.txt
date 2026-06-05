@@ -4,11 +4,13 @@ The 5-text_indentation module
 Using the function
 ------------------
 
->>> text_indentation = __import__('5-text_indentation').text_indentation
 >>> text_indentation("Hello. How are you? I am fine: thanks.")
 Hello.
+
 How are you?
+
 I am fine:
+
 thanks.
 
 >>> text_indentation("Holberton School.")
@@ -16,16 +18,21 @@ Holberton School.
 
 >>> text_indentation("A.B?C:D")
 A.
+
 B?
+
 C:
+
 D
 
 >>> text_indentation("  Hello.  World?  Yes: ok.")
 Hello.
-World?
-Yes:
-ok.
 
+World?
+
+Yes:
+
+ok.
 >>> try:
 ...     text_indentation(12)
 ... except TypeError as e:

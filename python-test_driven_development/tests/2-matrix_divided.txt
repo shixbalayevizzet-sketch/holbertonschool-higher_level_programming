@@ -31,6 +31,9 @@ Traceback (most recent call last):
 ...
 ZeroDivisionError: division by zero
 
+>>> matrix_divided([[1, 2], [3, 4]], float("inf"))
+[[0.0, 0.0], [0.0, 0.0]]
+
 >>> matrix_divided([[1, 2], [3, 4]])
 Traceback (most recent call last):
 ...

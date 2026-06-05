@@ -14,10 +14,10 @@ class Shape(ABC):
 
 class Circle(Shape):
     def __init__(self, radius):
-        self.radius = radius
+        self.radius = abs(radius)
 
     def area(self):
-        return math.pi * self.radius ** 2
+        return math.pi * (self.radius ** 2)
 
     def perimeter(self):
         return 2 * math.pi * self.radius
@@ -40,11 +40,9 @@ def shape_info(shape):
     print(f"Perimeter: {shape.perimeter()}")
 
 
-# Testing
-circle = Circle(5)
-rectangle = Rectangle(4, 6)
+if __name__ == "__main__":
+    circle = Circle(5)
+    rectangle = Rectangle(4, 6)
 
-shape_info(circle)
-print()
-
-shape_info(rectangle)
+    shape_info(circle)
+    shape_info(rectangle)

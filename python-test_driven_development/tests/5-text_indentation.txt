@@ -7,11 +7,11 @@ Using ``text_indentation``
 
 >>> text_indentation("Hello. How are you? I am fine: thanks.")
 Hello.
-
+<BLANKLINE>
 How are you?
-
+<BLANKLINE>
 I am fine:
-
+<BLANKLINE>
 thanks.
 
 >>> text_indentation("Holberton School.")
@@ -19,20 +19,20 @@ Holberton School.
 
 >>> text_indentation("A.B?C:D")
 A.
-
+<BLANKLINE>
 B?
-
+<BLANKLINE>
 C:
-
+<BLANKLINE>
 D
 
 >>> text_indentation("   Hello.   World?  Yes: ok.")
 Hello.
-
+<BLANKLINE>
 World?
-
+<BLANKLINE>
 Yes:
-
+<BLANKLINE>
 ok.
 
 >>> text_indentation(12)

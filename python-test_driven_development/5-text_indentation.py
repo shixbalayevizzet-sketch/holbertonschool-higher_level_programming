@@ -1,20 +1,22 @@
 #!/usr/bin/python3
 """Module that contains text_indentation function"""
 def text_indentation(text):
+    """
+    Prints a text with 2 new lines after each of these characters: ., ? and :
+    """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    i = 0
-    # Mətndəki qabaqcadan olan boşluqları silmək üçün
-    text = text.strip()
+    flag = 0
+    for char in text:
+        if flag == 1:
+            if char == " ":
+                continue
+            else:
+                flag = 0
 
-    while i < len(text):
-        print(text[i], end="")
-        if text[i] in ".?:":
+        print(char, end="")
+
+        if char in ".?:":
             print("\n")
-            # Nöqtədən sonra gələn boşluqları atırıq
-            i += 1
-            while i < len(text) and text[i] == " ":
-                i += 1
-            continue
-        i += 1
+            flag = 1

@@ -1,24 +1,18 @@
-#!/usr/bin/python3
-"""Module that contains text_indentation function"""
-
-
 def text_indentation(text):
-    """Print text with 2 new lines after '.', '?' and ':'"""
-
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
     i = 0
+    # Mətndəki qabaqcadan olan boşluqları silmək üçün
+    text = text.strip()
+
     while i < len(text):
         print(text[i], end="")
-
         if text[i] in ".?:":
             print("\n")
-
-            # skip spaces after punctuation
+            # Nöqtədən sonra gələn boşluqları atırıq
             i += 1
             while i < len(text) and text[i] == " ":
                 i += 1
             continue
-
         i += 1
